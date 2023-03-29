@@ -9,10 +9,9 @@ const client = new Client({
   database: process.env.DATABASE,
 });
 
-client.connect();
-
 export default function atualizarCompleto(req, res) {
   try {
+    client.connect();
     if (req.method === "POST") {
       const { completo, id } = req.body;
       const query = "UPDATE todo_list SET completo = $1 WHERE id = $2";

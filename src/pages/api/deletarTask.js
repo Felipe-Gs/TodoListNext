@@ -9,10 +9,9 @@ const client = new Client({
   database: process.env.DATABASE,
 });
 
-client.connect();
-
 export default function deletarTask(req, res) {
   try {
+    client.connect();
     if (req.method === "DELETE") {
       const { id } = req.body;
 

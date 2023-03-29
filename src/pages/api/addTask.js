@@ -10,9 +10,9 @@ const client = new Client({
   database: process.env.DATABASE,
 });
 
-client.connect();
 export default function addTask(req, res) {
   try {
+    client.connect();
     if (req.method === "POST") {
       const { titulo, tarefa } = req.body;
 
@@ -34,4 +34,5 @@ export default function addTask(req, res) {
   } catch (error) {
     console.log(error);
   }
+  client.end();
 }

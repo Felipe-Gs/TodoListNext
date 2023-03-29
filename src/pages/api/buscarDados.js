@@ -10,8 +10,8 @@ const client = new Client({
 });
 
 export default function buscarDados(req, res) {
-  client.connect();
   try {
+    client.connect();
     if (req.method === "GET") {
       const query = `SELECT * FROM todo_list`;
       client.query(query, (err, results) => {
